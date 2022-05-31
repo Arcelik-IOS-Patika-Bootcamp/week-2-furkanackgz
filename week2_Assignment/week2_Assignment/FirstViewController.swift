@@ -15,15 +15,25 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Initializing the VC as delegate of table view
-        tableView.delegate = self
+        // Setting Up UI
+        setupUI()
         
         // Creating data
         createData()
+        tableView.reloadData()
     }
 }
 
 extension FirstViewController {
+    
+    func setupUI() {
+        // Initializing the VC as delegate of table view
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        // Registering table view cell
+        tableView.register(UINib(nibName: "RoomTableViewCell", bundle: nil), forCellReuseIdentifier: "RoomTableViewCell")
+    }
     
     func createData() {
         roomsInfo.append(RoomInfo(name: "Living Room", image: UIImage(named: "livingRoom")!))
@@ -45,11 +55,12 @@ extension FirstViewController: UITableViewDelegate {
 extension FirstViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return roomsInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RoomTableViewCell", for: indexPath) as! RoomTableViewCell
+        cell.label.text = roomsInfo[indexPath.row].name
         return cell
     }
 }
