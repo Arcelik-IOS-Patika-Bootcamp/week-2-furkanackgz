@@ -20,6 +20,10 @@ class SecondViewController: UIViewController {
 
 extension SecondViewController: FirstViewControllerDelegate {
     
+    /*
+     After FirstVC calls this method setup UI components with the
+     passed data.
+     */
     func rowWasTapped(_ roomInfo: RoomInfo) {
         imageView.image = roomInfo.image
         label.text = roomInfo.name

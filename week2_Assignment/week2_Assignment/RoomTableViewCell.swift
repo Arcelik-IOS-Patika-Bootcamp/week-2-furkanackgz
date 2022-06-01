@@ -15,6 +15,7 @@ class RoomTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        // Configuring container view apperance.
         containerView.backgroundColor = .white
         containerView.layer.cornerRadius = 8
         containerView.layer.borderWidth = 1

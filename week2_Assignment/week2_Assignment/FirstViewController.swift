@@ -48,7 +48,10 @@ extension FirstViewController {
 extension FirstViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        /*
+         Before navigating to Second VC call the delegate function and pass roomInfo data
+         to present on SecondVC.
+         */
         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondViewController") as? SecondViewController {
             
             vc.rowWasTapped(roomsInfo[indexPath.row])
