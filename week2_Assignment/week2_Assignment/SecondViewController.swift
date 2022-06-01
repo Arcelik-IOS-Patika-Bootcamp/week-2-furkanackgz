@@ -14,7 +14,14 @@ class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
+}
+
+extension SecondViewController: FirstViewControllerDelegate {
+    
+    func rowWasTapped(_ roomInfo: RoomInfo) {
+        imageView.image = roomInfo.image
+        label.text = roomInfo.name
+    }
 }

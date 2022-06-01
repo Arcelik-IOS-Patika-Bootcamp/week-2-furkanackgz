@@ -50,6 +50,8 @@ extension FirstViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SecondViewController") as? SecondViewController {
+            
+            vc.rowWasTapped(roomsInfo[indexPath.row])
             navigationController?.pushViewController(vc, animated: true)
         }
     }
